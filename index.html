@@ -11,6 +11,39 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top, #0f172a 0%, #020617 45%, #000000 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 40s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 50% 50%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .hero-card {
+            opacity: 0;
+            transform: translateY(24px) scale(0.98);
+            animation: heroFadeIn 1.2s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes heroFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(24px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
         .glow-button {
             position: relative;
@@ -120,7 +153,7 @@
 
     <main class="pt-16">
         <section class="hero min-h-screen flex items-center justify-center px-4">
-            <div class="max-w-4xl mx-auto text-center">
+            <div class="hero-card max-w-4xl mx-auto text-center">
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                     Construyendo el Futuro Digital
                 </h1>
@@ -196,6 +229,16 @@
                 closeIcon.classList.add('hidden');
             });
         });
+
+        // Scroll al pulsar "Conoce Mi Trabajo"
+        const workButton = document.querySelector('.glow-button');
+        const servicesSection = document.getElementById('servicios');
+
+        if (workButton && servicesSection) {
+            workButton.addEventListener('click', () => {
+                servicesSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
     </script>
 </body>
 </html>
