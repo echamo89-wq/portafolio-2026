@@ -106,6 +106,21 @@
         .mobile-menu.open {
             max-height: 300px;
         }
+
+        .arrow-bounce {
+            animation: bounceArrow 1.5s ease-in-out infinite;
+            display: inline-block;
+            margin-left: 8px;
+        }
+
+        @keyframes bounceArrow {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-6px);
+            }
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-white min-h-screen">
@@ -161,8 +176,11 @@
                     Desarrollador Frontend de 17 años apasionado por crear experiencias web excepcionales. 
                     Mi objetivo: alcanzar <span class="text-blue-400 font-semibold">1,000€/mes</span> haciendo lo que amo.
                 </p>
-                <button class="glow-button bg-blue-600 hover:bg-blue-500 text-white font-semibold py-4 px-8 rounded-lg text-lg">
+                <button class="glow-button bg-blue-600 hover:bg-blue-500 text-white font-semibold py-4 px-8 rounded-lg text-lg flex items-center justify-center mx-auto">
                     Conoce Mi Trabajo
+                    <svg class="arrow-bounce w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
                 </button>
             </div>
         </section>
