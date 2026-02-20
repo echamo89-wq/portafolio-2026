@@ -3,92 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desarrollador Frontend | 17 años</title>
+    <meta name="description" content="Ezequiel Micaias - Landing Pages profesionales y rápidas con IA y Tailwind CSS. Honestidad y resultados reales desde 200€">
+    <title>Ezequiel Micaias | Landing Pages Rápidas y Profesionales</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #3b82f6;
+            --primary-purple: #8b5cf6;
+            --dark-bg: #0a0e27;
+            --dark-surface: #1e293b;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+            background-attachment: fixed;
+            color: #e2e8f0;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
-        .glow-button {
-            position: relative;
+
+        /* Navbar */
+        .navbar-glass {
+            background: rgba(10, 14, 39, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
             transition: all 0.3s ease;
         }
-        .glow-button:hover {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5),
-                        0 0 40px rgba(59, 130, 246, 0.3),
-                        0 0 60px rgba(59, 130, 246, 0.2);
-            transform: translateY(-2px);
+
+        .navbar-glass.scrolled {
+            background: rgba(10, 14, 39, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
-        .glow-button::before {
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Cards */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            background: rgba(30, 41, 59, 0.6);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .fade-in-delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .fade-in-delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .fade-in-delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .arrow-bounce {
+            animation: bounceArrow 2s ease-in-out infinite;
+        }
+
+        @keyframes bounceArrow {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* Project Cards */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            border-radius: 0.5rem;
-            padding: 2px;
-            background: linear-gradient(45deg, rgba(59, 130, 246, 0.5), rgba(147, 51, 234, 0.5));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        .glow-button:hover::before {
+
+        .project-card:hover::before {
             opacity: 1;
         }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
+
+        /* Skills */
+        .skill-badge {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
             transition: all 0.3s ease;
         }
-        .glass-card:hover {
-            transform: translateY(-8px);
-            background: rgba(30, 41, 59, 0.6);
-            border-color: rgba(148, 163, 184, 0.2);
+
+        .skill-badge:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: scale(1.05);
         }
-        .navbar-glass {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-        }
-        .nav-link {
-            transition: color 0.3s ease;
-        }
-        .nav-link:hover {
-            color: rgb(96, 165, 250);
-        }
+
+        /* Mobile Menu */
         .mobile-menu {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
         }
+
         .mobile-menu.open {
-            max-height: 300px;
+            max-height: 400px;
+        }
+
+        /* Section Spacing */
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        /* Contact Form */
+        .form-input {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: rgba(30, 41, 59, 0.7);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0e27;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
         }
     </style>
 </head>
-<body class="bg-slate-950 text-white min-h-screen">
+<body>
     <!-- Navbar -->
-    <nav class="navbar-glass fixed top-0 left-0 right-0 z-50">
+    <nav id="navbar" class="navbar-glass fixed top-0 left-0 right-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
+            <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                        Dev<span class="text-white">17</span>
+                <div class="flex-shrink-0">
+                    <a href="#inicio" class="text-2xl font-bold gradient-text">
+                        Ezequiel<span class="text-white"> Micaias</span>
                     </a>
                 </div>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="#inicio" class="nav-link text-slate-300 hover:text-blue-400 px-3 py-2 text-sm font-medium">Inicio</a>
+                    <a href="#sobre-mi" class="nav-link text-slate-300 hover:text-blue-400 px-3 py-2 text-sm font-medium">Sobre Mí</a>
+                    <a href="#habilidades" class="nav-link text-slate-300 hover:text-blue-400 px-3 py-2 text-sm font-medium">Habilidades</a>
                     <a href="#proyectos" class="nav-link text-slate-300 hover:text-blue-400 px-3 py-2 text-sm font-medium">Proyectos</a>
                     <a href="#servicios" class="nav-link text-slate-300 hover:text-blue-400 px-3 py-2 text-sm font-medium">Servicios</a>
                     <a href="#contacto" class="nav-link text-slate-300 hover:text-blue-400 px-3 py-2 text-sm font-medium">Contacto</a>
@@ -96,7 +269,7 @@
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-slate-300 hover:text-white focus:outline-none focus:text-white p-2">
+                    <button id="mobile-menu-button" class="text-slate-300 hover:text-white focus:outline-none p-2">
                         <svg id="menu-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -109,7 +282,10 @@
 
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="mobile-menu md:hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1 border-t border-slate-700/50">
+                <div class="px-2 pt-2 pb-4 space-y-1 border-t border-slate-700/50">
+                    <a href="#inicio" class="nav-link block text-slate-300 hover:text-blue-400 px-3 py-2 text-base font-medium">Inicio</a>
+                    <a href="#sobre-mi" class="nav-link block text-slate-300 hover:text-blue-400 px-3 py-2 text-base font-medium">Sobre Mí</a>
+                    <a href="#habilidades" class="nav-link block text-slate-300 hover:text-blue-400 px-3 py-2 text-base font-medium">Habilidades</a>
                     <a href="#proyectos" class="nav-link block text-slate-300 hover:text-blue-400 px-3 py-2 text-base font-medium">Proyectos</a>
                     <a href="#servicios" class="nav-link block text-slate-300 hover:text-blue-400 px-3 py-2 text-base font-medium">Servicios</a>
                     <a href="#contacto" class="nav-link block text-slate-300 hover:text-blue-400 px-3 py-2 text-base font-medium">Contacto</a>
@@ -118,63 +294,435 @@
         </div>
     </nav>
 
-    <main class="pt-16">
-        <section class="hero min-h-screen flex items-center justify-center px-4">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    Construyendo el Futuro Digital
-                </h1>
-                <p class="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto">
-                    Desarrollador Frontend de 17 años apasionado por crear experiencias web excepcionales. 
-                    Mi objetivo: alcanzar <span class="text-blue-400 font-semibold">1,000€/mes</span> haciendo lo que amo.
-                </p>
-                <button class="glow-button bg-blue-600 hover:bg-blue-500 text-white font-semibold py-4 px-8 rounded-lg text-lg">
-                    Conoce Mi Trabajo
-                </button>
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="min-h-screen flex items-center justify-center px-4 py-20 hero-gradient">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="fade-in">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text">
+                        Ezequiel Micaias
+                    </h1>
+                    <p class="text-xl md:text-2xl text-slate-300 mb-4 leading-relaxed max-w-3xl mx-auto fade-in-delay-1">
+                        Ingeniero de Prompts | Desarrollador Frontend | Disponibilidad 24/7
+                    </p>
+                    <p class="text-lg text-slate-400 mb-4 fade-in-delay-2">
+                        Lógica e Inteligencia Artificial avanzada (10/10) • Experiencia en Informática • Landing Pages profesionales con IA + Tailwind CSS
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4 mb-8 fade-in-delay-2">
+                        <span class="px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full text-sm text-blue-400">⚡ Disponible 24/7</span>
+                        <span class="px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-sm text-purple-400">🤖 IA Avanzada (10/10)</span>
+                        <span class="px-4 py-2 bg-pink-500/20 border border-pink-500/30 rounded-full text-sm text-pink-400">💻 Experiencia en Informática</span>
+                    </div>
+                    <p class="text-base text-slate-500 mb-12 fade-in-delay-2 italic max-w-2xl mx-auto">
+                        La confianza es lo que hace que te suelten los primeros 200€ por una Landing Page profesional
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in-delay-3">
+                        <button onclick="scrollToSection('servicios')" class="btn-primary text-white font-semibold py-4 px-8 rounded-lg text-lg flex items-center justify-center">
+                            Ver Servicios
+                            <svg class="arrow-bounce w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                        </button>
+                        <a href="#contacto" class="text-white font-semibold py-4 px-8 rounded-lg text-lg border-2 border-blue-500 hover:bg-blue-500/10 transition-all">
+                            Pedir Presupuesto
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="servicios" class="services py-20 px-4">
+        <!-- Sobre Mí Section -->
+        <section id="sobre-mi" class="py-20 px-4">
             <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Tarjeta 1: Diseño Responsivo -->
-                    <div class="glass-card rounded-xl p-8 text-center">
-                        <div class="mb-4 flex justify-center">
-                            <svg class="w-16 h-16 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text fade-in">Sobre Mí</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in">
+                        <div class="glass-card rounded-2xl p-8">
+                            <h3 class="text-2xl font-bold mb-4 text-white">Por qué elegirme</h3>
+                            <p class="text-slate-300 mb-4 leading-relaxed">
+                                Soy <strong class="text-blue-400">Ezequiel Micaias</strong>, tengo 17 años y soy completamente honesto sobre lo que sé hacer. 
+                                No te voy a prometer React avanzado o Node.js si no los domino. Te voy a decir la verdad: 
+                                <strong class="text-purple-400">sé maquetar muy rápido con IA y Tailwind CSS</strong>, y eso es exactamente lo que necesitas para una Landing Page profesional.
+                            </p>
+                            <p class="text-slate-300 mb-4 leading-relaxed">
+                                Mi ventaja competitiva es la <strong class="text-pink-400">transparencia</strong>. Prefiero ser claro sobre mis herramientas 
+                                (HTML5, CSS3, Tailwind CSS + IA) que inventar habilidades que no tengo. Los clientes valoran la honestidad, 
+                                y eso es lo que genera confianza para soltar esos primeros 200€.
+                            </p>
+                            <p class="text-slate-300 leading-relaxed">
+                                Trabajo rápido, entrego resultados profesionales y no te miento sobre lo que puedo hacer. 
+                                <strong class="text-green-400">Esa es mi promesa</strong>.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="fade-in-delay-1">
+                        <div class="glass-card rounded-2xl p-8">
+                            <h3 class="text-2xl font-bold mb-6 text-white">Mi Método</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <h4 class="text-lg font-semibold text-blue-400 mb-2">⚡ Velocidad con IA</h4>
+                                    <p class="text-slate-300 mt-2">Utilizo herramientas de IA para acelerar el desarrollo sin sacrificar calidad. Esto me permite entregar Landing Pages profesionales en menos tiempo.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-purple-400 mb-2">🎨 Tailwind CSS</h4>
+                                    <p class="text-slate-300 mt-2">Diseño responsivo rápido y eficiente. Tailwind me permite crear interfaces modernas que se ven perfectas en todos los dispositivos sin escribir CSS desde cero.</p>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-pink-400 mb-2">💎 Honestidad Total</h4>
+                                    <p class="text-slate-300 mt-2">No prometo lo que no puedo entregar. Si necesitas algo fuera de mi alcance, te lo digo directamente. La confianza vale más que promesas vacías.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Habilidades Section -->
+        <section id="habilidades" class="py-20 px-4 bg-slate-900/30">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text fade-in">Habilidades & Tecnologías</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div class="glass-card rounded-xl p-6 text-center fade-in">
+                        <div class="text-4xl mb-3">📄</div>
+                        <h3 class="font-semibold text-white mb-2">HTML5</h3>
+                        <p class="text-sm text-slate-400">Maquetación moderna y semántica</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-6 text-center fade-in-delay-1">
+                        <div class="text-4xl mb-3">🎨</div>
+                        <h3 class="font-semibold text-white mb-2">CSS3</h3>
+                        <p class="text-sm text-slate-400">Estilos modernos y animaciones</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-6 text-center fade-in-delay-2">
+                        <div class="text-4xl mb-3">⚡</div>
+                        <h3 class="font-semibold text-white mb-2">Tailwind CSS</h3>
+                        <p class="text-sm text-slate-400">Diseño rápido y responsivo</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-6 text-center fade-in-delay-3">
+                        <div class="text-4xl mb-3">📱</div>
+                        <h3 class="font-semibold text-white mb-2">Diseño Responsivo</h3>
+                        <p class="text-sm text-slate-400">Adaptable a todos los dispositivos</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-6 text-center fade-in">
+                        <div class="text-4xl mb-3">🤖</div>
+                        <h3 class="font-semibold text-white mb-2">Desarrollo con IA</h3>
+                        <p class="text-sm text-slate-400">Asistencia inteligente en desarrollo</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-6 text-center fade-in-delay-1">
+                        <div class="text-4xl mb-3">📘</div>
+                        <h3 class="font-semibold text-white mb-2">JavaScript</h3>
+                        <p class="text-sm text-slate-400">En formación continua</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proyectos Section -->
+        <section id="proyectos" class="py-20 px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 gradient-text fade-in">Proyectos Destacados</h2>
+                <p class="text-center text-slate-400 mb-16 fade-in-delay-1">Algunos de mis trabajos más recientes</p>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Proyecto 1 -->
+                    <div class="project-card glass-card rounded-xl overflow-hidden fade-in">
+                        <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                            <div class="text-6xl">🌐</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Landing Page Moderna</h3>
+                            <p class="text-slate-400 mb-4 text-sm">Página de aterrizaje desarrollada con HTML5, CSS3 y Tailwind CSS. Diseño responsivo, animaciones suaves y estructura semántica optimizada.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-blue-400">HTML5</span>
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-blue-400">CSS3</span>
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-blue-400">Tailwind</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Ver Demo →</a>
+                                <a href="#" class="text-purple-400 hover:text-purple-300 text-sm font-medium">Código →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2 -->
+                    <div class="project-card glass-card rounded-xl overflow-hidden fade-in-delay-1">
+                        <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                            <div class="text-6xl">📊</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Portafolio Web</h3>
+                            <p class="text-slate-400 mb-4 text-sm">Sitio web portafolio con diseño moderno, secciones bien estructuradas y diseño completamente responsivo. Maquetado con HTML5 semántico y estilizado con Tailwind CSS.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-purple-400">HTML5</span>
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-purple-400">CSS3</span>
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-purple-400">Tailwind</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Ver Demo →</a>
+                                <a href="#" class="text-purple-400 hover:text-purple-300 text-sm font-medium">Código →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 3 -->
+                    <div class="project-card glass-card rounded-xl overflow-hidden fade-in-delay-2">
+                        <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                            <div class="text-6xl">🎮</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Sitio Web Corporativo</h3>
+                            <p class="text-slate-400 mb-4 text-sm">Página web corporativa con múltiples secciones, diseño profesional y completamente responsivo. Desarrollado con HTML5 semántico y Tailwind CSS para un diseño rápido y eficiente.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-green-400">HTML5</span>
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-green-400">CSS3</span>
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-green-400">Tailwind</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Ver Demo →</a>
+                                <a href="#" class="text-purple-400 hover:text-purple-300 text-sm font-medium">Código →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 4 -->
+                    <div class="project-card glass-card rounded-xl overflow-hidden fade-in-delay-3">
+                        <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                            <div class="text-6xl">🎨</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Portafolio Creativo</h3>
+                            <p class="text-slate-400 mb-4 text-sm">Sitio web portafolio con animaciones suaves, diseño moderno y optimizado para SEO. Incluye formulario de contacto funcional.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-orange-400">HTML/CSS</span>
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-orange-400">JavaScript</span>
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-orange-400">GSAP</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Ver Demo →</a>
+                                <a href="#" class="text-purple-400 hover:text-purple-300 text-sm font-medium">Código →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 5 -->
+                    <div class="project-card glass-card rounded-xl overflow-hidden fade-in">
+                        <div class="h-48 bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center">
+                            <div class="text-6xl">💬</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Formulario Interactivo</h3>
+                            <p class="text-slate-400 mb-4 text-sm">Formulario de contacto con validación, diseño moderno y animaciones suaves. Maquetado con HTML5 y estilizado con Tailwind CSS, completamente responsivo.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-indigo-400">HTML5</span>
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-indigo-400">CSS3</span>
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-indigo-400">Tailwind</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Ver Demo →</a>
+                                <a href="#" class="text-purple-400 hover:text-purple-300 text-sm font-medium">Código →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 6 -->
+                    <div class="project-card glass-card rounded-xl overflow-hidden fade-in-delay-1">
+                        <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                            <div class="text-6xl">🌦️</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Tarjetas de Producto</h3>
+                            <p class="text-slate-400 mb-4 text-sm">Diseño de tarjetas de producto con efectos hover, animaciones CSS3 y diseño responsivo. Maquetado con HTML5 semántico y estilizado con Tailwind CSS.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-cyan-400">HTML5</span>
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-cyan-400">CSS3</span>
+                                <span class="skill-badge px-3 py-1 rounded-full text-xs text-cyan-400">Tailwind</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-medium">Ver Demo →</a>
+                                <a href="#" class="text-purple-400 hover:text-purple-300 text-sm font-medium">Código →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios Section -->
+        <section id="servicios" class="py-20 px-4 bg-slate-900/30">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 gradient-text fade-in">Servicios</h2>
+                <p class="text-center text-slate-400 mb-16 fade-in-delay-1">Lo que realmente sé hacer</p>
+                
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Servicio Principal: Landing Pages -->
+                    <div class="glass-card rounded-xl p-8 text-center fade-in md:col-span-2 border-2 border-blue-500/30">
+                        <div class="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 text-white">Landing Pages Profesionales</h3>
+                        <p class="text-slate-300 mb-4 leading-relaxed text-lg">
+                            <strong class="text-blue-400">Especialidad principal:</strong> Creo Landing Pages modernas, responsivas y optimizadas usando IA + Tailwind CSS. 
+                            Entrego resultados rápidos sin promesas falsas sobre tecnologías que no domino.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed">
+                            Maquetación HTML5 semántica • Diseño responsivo con Tailwind CSS • Optimización de velocidad • 
+                            Estructura SEO-friendly • Formularios funcionales • Animaciones suaves
+                        </p>
+                        <div class="mt-6 pt-6 border-t border-slate-700">
+                            <p class="text-blue-400 font-semibold text-xl">Desde 200€</p>
+                            <p class="text-slate-400 text-sm mt-2">Precio honesto por trabajo honesto</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-8 text-center fade-in-delay-1">
+                        <div class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Desarrollo Rápido</h3>
+                        <p class="text-slate-400 leading-relaxed">IA + Tailwind CSS = velocidad sin sacrificar calidad. Entregas más rápidas sin comprometer el resultado profesional.</p>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-8 text-center fade-in-delay-2">
+                        <div class="w-16 h-16 bg-pink-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                             </svg>
                         </div>
                         <h3 class="text-2xl font-semibold mb-3 text-white">Diseño Responsivo</h3>
-                        <p class="text-slate-400">Experiencias perfectas en todos los dispositivos</p>
+                        <p class="text-slate-400 leading-relaxed">Tailwind CSS garantiza que tu Landing Page se vea perfecta en móviles, tablets y escritorio. Sin excepciones.</p>
                     </div>
 
-                    <!-- Tarjeta 2: Optimización SEO -->
-                    <div class="glass-card rounded-xl p-8 text-center">
-                        <div class="mb-4 flex justify-center">
-                            <svg class="w-16 h-16 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    <div class="glass-card rounded-xl p-8 text-center fade-in-delay-3">
+                        <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-semibold mb-3 text-white">Optimización SEO</h3>
-                        <p class="text-slate-400">Mayor visibilidad en los motores de búsqueda</p>
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Transparencia Total</h3>
+                        <p class="text-slate-400 leading-relaxed">Te digo exactamente qué puedo hacer y qué no. Sin sorpresas, sin promesas vacías. Solo honestidad que genera confianza.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto Section -->
+        <section id="contacto" class="py-20 px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 gradient-text fade-in">Contacto</h2>
+                <p class="text-center text-slate-400 mb-12 fade-in-delay-1">¿Tienes un proyecto en mente? Hablemos</p>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="fade-in">
+                        <div class="glass-card rounded-xl p-8">
+                            <h3 class="text-2xl font-bold mb-6 text-white">Información de Contacto</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center mr-4">
+                                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-white mb-1">Email</h4>
+                                        <a href="mailto:contacto@ejemplo.com" class="text-blue-400 hover:text-blue-300">contacto@ejemplo.com</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center mr-4">
+                                        <svg class="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-white mb-1">GitHub</h4>
+                                        <a href="https://github.com" target="_blank" class="text-purple-400 hover:text-purple-300">github.com/tuusuario</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center mr-4">
+                                        <svg class="w-5 h-5 text-pink-400" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-white mb-1">LinkedIn</h4>
+                                        <a href="https://linkedin.com" target="_blank" class="text-pink-400 hover:text-pink-300">linkedin.com/in/tuusuario</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Tarjeta 3: Velocidad Ultra-rápida -->
-                    <div class="glass-card rounded-xl p-8 text-center">
-                        <div class="mb-4 flex justify-center">
-                            <svg class="w-16 h-16 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
+                    <div class="fade-in-delay-1">
+                        <div class="glass-card rounded-xl p-8">
+                            <h3 class="text-2xl font-bold mb-6 text-white">Envíame un Mensaje</h3>
+                            <form id="contact-form" class="space-y-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Nombre</label>
+                                    <input type="text" id="name" name="name" required class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-slate-500" placeholder="Tu nombre">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                                    <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-slate-500" placeholder="tu@email.com">
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Mensaje</label>
+                                    <textarea id="message" name="message" rows="5" required class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-slate-500 resize-none" placeholder="Cuéntame sobre tu proyecto..."></textarea>
+                                </div>
+                                <button type="submit" class="btn-primary w-full text-white font-semibold py-3 px-6 rounded-lg">
+                                    Enviar Mensaje
+                                </button>
+                            </form>
                         </div>
-                        <h3 class="text-2xl font-semibold mb-3 text-white">Velocidad Ultra-rápida</h3>
-                        <p class="text-slate-400">Carga instantánea para mejor experiencia</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-slate-400 text-sm">© 2024 Ezequiel Micaias. Todos los derechos reservados.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-purple-400 transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-blue-400 transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -194,6 +742,62 @@
                 mobileMenu.classList.remove('open');
                 menuIcon.classList.remove('hidden');
                 closeIcon.classList.add('hidden');
+            });
+        });
+
+        // Smooth scroll function
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Contact form handling
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            // Here you would normally send the data to a server
+            // For now, we'll just show an alert
+            alert(`¡Gracias ${name}! Tu mensaje ha sido enviado. Te contactaré pronto en ${email}`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in, .fade-in-delay-1, .fade-in-delay-2, .fade-in-delay-3').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
             });
         });
     </script>
